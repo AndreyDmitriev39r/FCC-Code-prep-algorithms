@@ -7,21 +7,32 @@ For example, aab should return 2 because it has 6 total permutations (aab, aab, 
 but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating.
 */
 
-const str = 'aab';
-
-
-const allPermutations = (str) => {
-  let len = str.length
-  //base cases
-  if (len === 0 || len === 1) {
-    return str;
+const factorial = (num) => {
+  let mult = num - 1;
+  while (mult > 0) {
+    num *= mult;
+    mult--;
   }
+  return num;
 }
 
-/*base cases test
-const empty = '';
-const singlechar = 'a';
+function permAlone(str) {
+  return str;
+}
 
-console.log(allPermutations(empty))
-console.log(allPermutations(singlechar))
-*/
+const testCases = [
+  "aab",
+  "aab",
+  "aaa",
+  "aabb",
+  "abcdefa",
+  "abfdefa",
+  "zzzzzzzz",
+  "a",
+  "aaab",
+  "aaabb"
+  ];
+  
+for (test of testCases) {
+  console.log(permAlone(test));
+}
