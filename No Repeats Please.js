@@ -7,6 +7,21 @@ For example, aab should return 2 because it has 6 total permutations (aab, aab, 
 but only 2 of them (aba and aba) don't have the same letter (in this case a) repeating.
 */
 
-function permAlone(str) {
+const str = 'aab';
+
+
+const allPermutations = (str) => {
+  let len = str.length
+  //base cases
+  if (len === 0 || len === 1) {
     return str;
   }
+}
+
+/*base cases test
+const empty = '';
+const singlechar = 'a';
+
+console.log(allPermutations(empty))
+console.log(allPermutations(singlechar))
+*/
