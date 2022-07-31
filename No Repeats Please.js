@@ -17,22 +17,44 @@ const factorial = (num) => {
 }
 
 function permAlone(str) {
+  
+  const len = str.length;
+  let charOccurances = {};
+  
+  for (let i = 0; i < len; i++) {
+    if (charOccurances.hasOwnProperty(str[i])) {
+      charOccurances[str[i]] += 1;
+    }
+    else {
+      charOccurances[str[i]] = 1;
+    }
+  }
+  
+  console.log('Checking occurances of chars for string ', str);
+  console.log(charOccurances);
+  
+  const allPossiblePerms = factorial(len);
+  
+  console.log('logging number of all perms ', allPossiblePerms);
+  
   return str;
 }
 
 const testCases = [
-  "aab",
-  "aab",
-  "aaa",
-  "aabb",
-  "abcdefa",
-  "abfdefa",
-  "zzzzzzzz",
-  "a",
-  "aaab",
-  "aaabb"
+  ["aab", 2],
+  ["aaa", 0],
+  ["aabb", 8],
+  ["abcdefa", 3600],
+  ["abfdefa", 2640],
+  ["zzzzzzzz", 0],
+  ["a", 1],
+  ["aaab", 0],
+  ["aaabb", 12],
   ];
   
 for (test of testCases) {
-  console.log(permAlone(test));
+  console.log('TEST CASE ', test[0]);
+  console.log('result: ', permAlone(test[0]));
+  console.log('no repeats perms, expected: ', test[1]);
+  console.log('---------------')
 }
