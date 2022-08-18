@@ -8,9 +8,22 @@ function mergeSort(array) {
   // Only change code below this line
   // helper function for merging two sorted arrays
   const mergeTwo = (arr1, arr2) => {
-    return arr1[0] > arr2[0] 
-      ? [...arr2, ...arr1]
-      : [...arr1, ...arr2];
+    let result = [];
+    let [len1 ,len2, arr1Idx, arr2Idx] 
+          = [arr1.length, arr2.length, 0, 0];
+    while (arr1Idx < len1 || arr2Idx < len2) {
+      if (arr1[arr1Idx] <= arr2[arr2Idx] || arr2[arr2Idx] === undefined) {
+        // console.log(arr1[arr1Idx], arr2[arr2Idx])
+        result.push(arr1[arr1Idx]);
+        arr1Idx++;
+      }
+      else if (arr1[arr1Idx] > arr2[arr2Idx] || arr1[arr1Idx] === undefined) {
+        // console.log(arr1[arr1Idx], arr2[arr2Idx])
+        result.push(arr2[arr2Idx]);
+        arr2Idx++;
+      }
+    }
+    return result;
   }
   // BASE CASE
   const len = array.length;  
