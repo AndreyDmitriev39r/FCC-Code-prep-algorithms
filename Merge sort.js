@@ -6,6 +6,24 @@ A good way to implement this is to write one function, for instance merge, which
 
 function mergeSort(array) {
   // Only change code below this line
-  return array;
+  // helper function for merging two sorted arrays
+  const mergeTwo = (arr1, arr2) => {
+    return arr1[0] > arr2[0] 
+      ? [...arr2, ...arr1]
+      : [...arr1, ...arr2];
+  }
+  // BASE CASE
+  const len = array.length;  
+  if (len === 0 || len === 1) {
+    return array;
+  }
+  // RECURSIVE STEP
+  else {      
+    const left = array.slice(0, len / 2);
+    const right = array.slice(len / 2);
+    return mergeTwo(mergeSort(left), mergeSort(right));
+  }
   // Only change code above this line
 }
+
+console.log(mergeSort([12, 6 , 11, 10]));
