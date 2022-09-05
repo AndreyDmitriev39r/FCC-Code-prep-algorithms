@@ -3,30 +3,30 @@ This method works by building up a sorted array at the beginning of the list. It
 */
 
 function insertionSort(array) {
-    // Only change code below this line
-    let copy = array.slice();
-    // outer loop >>> copy[i] will be the first unsorted element
-    for (let i = 1; i < copy.length; i++) {
-      const element = copy[i];      
-      // inner loop >>> moving through sorted portion backwards
-      for (let j = i - 1; j >= 0; j--) {
-        // console.log(copy[j]);
-        //if position for element is found >>> can insert it and quit inner loop
-        if (copy[j] <= element) {
-          copy[j + 1] = element;          
-        }
-        //otherwise >>> (e.g elem === 2 and copy[j] === 4)
-        //4 goes to replace 2 on its position, and inner loop continues
-        else {
-          copy[j + 1] = copy[j];
-        }
+  // Only change code below this line
+  let copy = array.slice();
+  let len = copy.length;
+  for (let i = 1; i < len; i++) {
+    // console.log('OUTER LOOP ITERATION ', i);
+    for(let j = i; j > 0; j--) {
+      // console.log('INNER LOOP ITERATION STARTS ', i , j);
+      if (copy[j] >= copy[j - 1]) {
+        // console.log('place found');
+        break;
       }
-      // console.log('------------');
+      else {
+        // console.log('swapping');
+        [copy[j], copy[j - 1]] = [copy[j - 1], copy[j]];
+      }
     }
-    return copy;
-    // Only change code above this line
+    // console.log('OUTER LOOP ITERATION ENDS', i);
+  }
+  return copy;
+  // Only change code above this line
 }
 
-const testArray = [1,4,2,8,345,123,43,32,5643,63,123,43,2,55,1,234,92];
+const testArray1 = [1,4,2,8,345,123,43,32,5643,63,123,43,2,55,1,234,92];
+const testArray2 = [5, 4, 33, 2, 8];
 
-console.log(insertionSort(testArray));
+console.log(insertionSort(testArray1));
+console.log(insertionSort(testArray2));
